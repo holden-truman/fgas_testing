@@ -88,8 +88,7 @@ def _compute_lensing_angles_astropy2(
     sk_src = SkyCoord(ra_source_list * u.deg, dec_source_list * u.deg, frame="icrs")
     angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
     # Transformations for phi to have same orientation as _compute_lensing_angles_flatsky
-    #phi += 0.5 * np.pi
-    phi -= 0.5 * np.pi
+    phi += 0.5 * np.pi
     if np.iterable(phi):
         phi[phi > np.pi] -= 2 * np.pi
         phi[angsep == 0] = 0
@@ -134,14 +133,14 @@ def _compute_lensing_angles_astropy3(
     # Transformations for phi to have same orientation as _compute_lensing_angles_flatsky
     #phi += 0.5 * np.pi
     phi -= 0.5 * np.pi
-    if coordinate_system == "celestial":
-        phi = np.pi - phi
     if np.iterable(phi):
         phi[phi > np.pi] -= 2 * np.pi
         phi[angsep == 0] = 0
     else:
         phi -= 2 * np.pi if phi > np.pi else 0
         phi = 0 if angsep == 0 else phi
+    if coordinate_system == "celestial":
+        phi = np.pi - phi
     return angsep, phi
 
 #not the real one
