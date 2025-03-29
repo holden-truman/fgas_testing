@@ -73,8 +73,8 @@ rxj2129_lensing = ClusterLensing(name="RXJ2129", phot_cat_path='/sdf/home/h/hold
 macs1115_lensing = ClusterLensing(name="MACS1115", phot_cat_path='/sdf/home/h/holden/from_lucie_2024/MACS1115/MACS1115_run002_v2_adam_2.fits',
                            dgamma=2*0.01, z_cl=0.355, lensband='W-C-RC', ra_c=168.96666667, dec_c=1.49861111)
 
-#rxj2129_lensing.plot_radius()
-#macs1115_lensing.plot_radius()
+rxj2129_lensing.plot_radius()
+macs1115_lensing.plot_radius()
 
-rxj2129_lensing.plot_ra_dec()
-macs1115_lensing.plot_ra_dec()
+#rxj2129_lensing.plot_ra_dec()
+#macs1115_lensing.plot_ra_dec()
