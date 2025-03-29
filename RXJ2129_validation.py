@@ -9,6 +9,7 @@ from matplotlib.ticker import MaxNLocator
 # for cosomology dependence
 from astropy import units as u
 from astropy.cosmology import Planck15 as cosmo 
+from astropy.coordinates import SkyCoord
 from copy import copy
 import matplotlib.pyplot as plt
 import numpy.lib.recfunctions as rfn
