@@ -100,7 +100,52 @@ def _compute_lensing_angles_astropy2(
         phi = np.pi - phi
     return angsep, phi
 
+def _compute_lensing_angles_astropy3(
+    ra_lens, dec_lens, ra_source_list, dec_source_list, coordinate_system="euclidean"
+):
+    r"""Compute the angular separation between the lens and the source and the azimuthal
+    angle from the lens to the source in radians.
+
+    Parameters
+    ----------
+    ra_lens: float
+        Right ascension of the lensing cluster in degrees
+    dec_lens: float
+        Declination of the lensing cluster in degrees
+    ra_source_list: array
+        Right ascensions of each source galaxy in degrees
+    dec_source_list: array
+        Declinations of each source galaxy in degrees
+    coordinate_system: str, optional
+        Coordinate system of the ellipticity components. Must be either 'celestial' or
+        euclidean'. See https://doi.org/10.48550/arXiv.1407.7676 section 5.1 for more details.
+        Default is 'euclidean'.
+
+    Returns
+    -------
+    angsep: array
+        Angular separation between the lens and the source in radians
+    phi: array
+        Azimuthal angle from the lens to the source in radians
+    """
+    sk_lens = SkyCoord(ra_lens * u.deg, dec_lens * u.deg, frame="icrs")
+    sk_src = SkyCoord(ra_source_list * u.deg, dec_source_list * u.deg, frame="icrs")
+    angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
+    # Transformations for phi to have same orientation as _compute_lensing_angles_flatsky
+    #phi += 0.5 * np.pi
+    phi -= 0.5 * np.pi
+    if np.iterable(phi):
+        phi[phi > np.pi] -= 2 * np.pi
+        phi[angsep == 0] = 0
+    else:
+        phi -= 2 * np.pi if phi > np.pi else 0
+        phi = 0 if angsep == 0 else phi
+    if coordinate_system == "celestial":
+        phi = np.pi - phi
+    return angsep, phi
+
 #not the real one
+'''
 def _compute_lensing_angles_flatsky(ra_lens, dec_lens, ra_src, dec_src):
     ra_lens = np.deg2rad(ra_lens)
     dec_lens = np.deg2rad(dec_lens)
@@ -113,3 +158,4 @@ def _compute_lensing_angles_flatsky(ra_lens, dec_lens, ra_src, dec_src):
     denominator = np.cos(dec_lens) * np.sin(dec_src) - np.sin(dec_lens) * np.cos(dec_src) * np.cos(delta_ra)
     phi = np.arctan2(numerator, denominator)
     return phi, phi
+'''
