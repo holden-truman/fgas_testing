@@ -1,6 +1,5 @@
 import numpy as np
 import fitsio
-%matplotlib inline
 import matplotlib.pyplot as plt
 import matplotlib.ticker
 import sys
@@ -11,7 +10,6 @@ from matplotlib.ticker import MaxNLocator
 from astropy import units as u
 from astropy.cosmology import Planck15 as cosmo 
 from copy import copy
-%matplotlib inline
 import matplotlib.pyplot as plt
 import numpy.lib.recfunctions as rfn
 
