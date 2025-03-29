@@ -97,3 +97,27 @@ def _compute_lensing_angles_astropy2(
     if coordinate_system == "celestial":
         phi = np.pi - phi
     return angsep, phi
+
+#not the real one
+def _compute_lensing_angles_flatsky(ra_lens, dec_lens, ra_src, dec_src):
+    # Convert RA/Dec to Cartesian (x, y) on a unit sphere
+    x_lens = np.cos(np.radians(dec_lens)) * np.cos(np.radians(ra_lens))
+    y_lens = np.cos(np.radians(dec_lens)) * np.sin(np.radians(ra_lens))
+    z_lens = np.sin(np.radians(dec_lens))
+
+    x_src = np.cos(np.radians(dec_src)) * np.cos(np.radians(ra_src))
+    y_src = np.cos(np.radians(dec_src)) * np.sin(np.radians(ra_src))
+    z_src = np.sin(np.radians(dec_src))
+
+    # Separation vector (x, y, z)
+    dx = x_src - x_lens
+    dy = y_src - y_lens
+    dz = z_src - z_lens
+
+    # Angular separation (Euclidean distance on the unit sphere)
+    r_rad = np.arccos(np.dot([x_lens, y_lens, z_lens], [x_src, y_src, z_src]))
+
+    # Compute position angle (East of North)
+    phi = np.arctan2(dy, dx)
+
+    return r_rad, phi
