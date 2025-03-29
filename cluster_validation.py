@@ -81,8 +81,8 @@ macs1115_lensing.plot_radius()
 #macs1115_lensing.plot_ra_dec()
 '''
 
-sk_lens = SkyCoord(10 * u.deg, 10 * u.deg, frame="icrs")
-sk_src = SkyCoord(12 * u.deg, 12 * u.deg, frame="icrs")
+sk_lens = SkyCoord(10 * u.deg, 0 * u.deg, frame="icrs")
+sk_src = SkyCoord(12 * u.deg, 2 * u.deg, frame="icrs")
 angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
 
 print(sk_lens)
