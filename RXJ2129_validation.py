@@ -108,5 +108,14 @@ def _compute_lensing_angles_astropy2(
         phi = np.pi - phi
     return angsep, phi
 
+# cluster info
+DGAMMA=2*0.01 # applied shear in metacal
+
+z_cl=.234
+lensband='W-C-RC'
+
+RA_C= 322.41650000                                                                       
+DEC_C= 0.10588889
+
 r_rad,phi = compute_lensing_angles_astropy(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"])
 r_rad2,phi2 = _compute_lensing_angles_astropy2(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"],coordinate_system="euclidean")
