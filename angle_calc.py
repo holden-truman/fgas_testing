@@ -10,6 +10,8 @@ import matplotlib.patches as mpatches
 import scipy
 from scipy.optimize import curve_fit
 
+import numpy as np
+
 def compute_lensing_angles_astropy(ra_lens, dec_lens, ra_source_list, dec_source_list):
     #from clmm
     r"""Compute the angular separation between the lens and the source and the azimuthal
