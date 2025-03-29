@@ -45,6 +45,26 @@ class ClusterLensing:
 
         plt.show()
 
+    def plot_ra_dec(self):
+        # Extract RA and DEC
+        ra = phot_cat['ra']
+        dec = phot_cat['dec']
+        
+        # Create the plot
+        plt.figure(figsize=(8, 6))
+        plt.scatter(ra, dec, s=1, color='blue', alpha=0.5)
+        
+        # Set labels and title
+        plt.xlabel('Right Ascension (deg)')
+        plt.ylabel('Declination (deg)')
+        plt.title('RA vs DEC from FITS Catalog')
+        
+        # Show grid
+        plt.grid(True)
+        
+        # Show the plot
+        plt.show()
+
 
 # Example usage:
 rxj2129_lensing = ClusterLensing(name="RXJ2129", phot_cat_path='/sdf/home/h/holden/from_lucie_2024/RXJ2129/RXJ2129_run001_v2_adam.fits',
@@ -53,5 +73,8 @@ rxj2129_lensing = ClusterLensing(name="RXJ2129", phot_cat_path='/sdf/home/h/hold
 macs1115_lensing = ClusterLensing(name="MACS1115", phot_cat_path='/sdf/home/h/holden/from_lucie_2024/MACS1115/MACS1115_run002_v2_adam_2.fits',
                            dgamma=2*0.01, z_cl=0.355, lensband='W-C-RC', ra_c=168.96666667, dec_c=1.49861111)
 
-rxj2129_lensing.plot_radius()
-macs1115_lensing.plot_radius()
+#rxj2129_lensing.plot_radius()
+#macs1115_lensing.plot_radius()
+
+rxj2129_lensing.plot_ra_dec()
+macs1115_lensing.plot_ra_dec()
