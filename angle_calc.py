@@ -1,4 +1,14 @@
+# for cosomology dependence
+from astropy import units as u
+from astropy.cosmology import Planck15 as cosmo 
 from astropy.coordinates import SkyCoord
+from copy import copy
+import matplotlib.pyplot as plt
+import numpy.lib.recfunctions as rfn
+
+import matplotlib.patches as mpatches
+import scipy
+from scipy.optimize import curve_fit
 
 def compute_lensing_angles_astropy(ra_lens, dec_lens, ra_source_list, dec_source_list):
     #from clmm
