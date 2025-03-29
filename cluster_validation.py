@@ -82,7 +82,7 @@ macs1115_lensing.plot_radius()
 '''
 
 sk_lens = SkyCoord(10 * u.deg, 10 * u.deg, frame="icrs")
-sk_src = SkyCoord(10.1 * u.deg, 10.2 * u.deg, frame="icrs")
+sk_src = SkyCoord(11 * u.deg, 12 * u.deg, frame="icrs")
 angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
 
 print(sk_lens)
