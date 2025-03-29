@@ -88,4 +88,3 @@ angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
 print(sk_lens)
 print(sk_src)
 print(phi)
-print(angsep)
