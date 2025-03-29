@@ -109,4 +109,4 @@ def _compute_lensing_angles_astropy2(
     return angsep, phi
 
 r_rad,phi = compute_lensing_angles_astropy(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"])
-r_rad2,phi2 = _compute_lensing_angles_astropy2(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"],coordinate_system="euclidean"
+r_rad2,phi2 = _compute_lensing_angles_astropy2(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"],coordinate_system="euclidean")
