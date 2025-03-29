@@ -44,6 +44,7 @@ def compute_lensing_angles_astropy(ra_lens, dec_lens, ra_source_list, dec_source
     if not all(-90. <= x_ <= 90 for x_ in dec_source_list):
         raise ValueError("Cluster has an invalid dec in the source catalog")
     sk_lens = SkyCoord(ra_lens*u.deg, dec_lens*u.deg, frame='icrs')
+
     sk_src = SkyCoord(ra_source_list*u.deg,
                       dec_source_list*u.deg, frame='icrs')
     angsep, phi = sk_lens.separation(

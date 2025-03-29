@@ -66,6 +66,7 @@ class ClusterLensing:
         plt.show()
 
 
+'''
 # Example usage:
 rxj2129_lensing = ClusterLensing(name="RXJ2129", phot_cat_path='/sdf/home/h/holden/from_lucie_2024/RXJ2129/RXJ2129_run001_v2_adam.fits',
                            dgamma=2*0.01, z_cl=0.234, lensband='W-C-RC', ra_c=322.41650000, dec_c=0.10588889)
@@ -78,3 +79,13 @@ macs1115_lensing.plot_radius()
 
 #rxj2129_lensing.plot_ra_dec()
 #macs1115_lensing.plot_ra_dec()
+'''
+
+sk_lens = SkyCoord(10 * u.deg, 10 * u.deg, frame="icrs")
+sk_src = SkyCoord(10.1 * u.deg, 10.2 * u.deg, frame="icrs")
+angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
+
+print(sk_lens)
+print(sk_src)
+print(phi)
+print(angsep)
