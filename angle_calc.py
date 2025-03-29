@@ -1,28 +1,3 @@
-import numpy as np
-import fitsio
-import matplotlib.pyplot as plt
-import matplotlib.ticker
-import sys
-from matplotlib.colors import BoundaryNorm
-from matplotlib.ticker import MaxNLocator
-
-# for cosomology dependence
-from astropy import units as u
-from astropy.cosmology import Planck15 as cosmo 
-from astropy.coordinates import SkyCoord
-from copy import copy
-import matplotlib.pyplot as plt
-import numpy.lib.recfunctions as rfn
-
-import matplotlib.patches as mpatches
-import scipy
-from scipy.optimize import curve_fit
-
-#load shear and photometry catalogs
-phot_cat = fitsio.read('/sdf/home/h/holden/from_lucie_2024/RXJ2129/RXJ2129_run001_v2_adam.fits')
-#shear_cat=fitsio.read('/sps/lsst/users/lbaumont/data/SUBARU/RXJ2129/lensing/ngmix/RXJ2129_lensing_run004.fits')
-
-
 def compute_lensing_angles_astropy(ra_lens, dec_lens, ra_source_list, dec_source_list):
     #from clmm
     r"""Compute the angular separation between the lens and the source and the azimuthal
@@ -108,21 +83,3 @@ def _compute_lensing_angles_astropy2(
     if coordinate_system == "celestial":
         phi = np.pi - phi
     return angsep, phi
-
-# cluster info
-DGAMMA=2*0.01 # applied shear in metacal
-
-z_cl=.234
-lensband='W-C-RC'
-
-RA_C= 322.41650000                                                                       
-DEC_C= 0.10588889
-
-r_rad,phi = compute_lensing_angles_astropy(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"])
-r_rad2,phi2 = _compute_lensing_angles_astropy2(RA_C, DEC_C, phot_cat["ra"], phot_cat["dec"],coordinate_system="euclidean")
-
-plt.scatter(phi,phi2)
-plt.xlabel(r'$\phi_{old}$ [rad]')
-plt.ylabel(r'$\phi_{new}$ [rad]')
-
-plt.show()
