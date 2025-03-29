@@ -33,7 +33,7 @@ class ClusterLensing:
         
         # Compute lensing angles
         self.r_rad, self.phi = compute_lensing_angles_astropy(self.RA_C, self.DEC_C, self.phot_cat["ra"], self.phot_cat["dec"])
-        self.r_rad2, self.phi2 = _compute_lensing_angles_astropy2(self.RA_C, self.DEC_C, self.phot_cat["ra"], self.phot_cat["dec"], coordinate_system="celestian")
+        self.r_rad2, self.phi2 = _compute_lensing_angles_astropy2(self.RA_C, self.DEC_C, self.phot_cat["ra"], self.phot_cat["dec"], coordinate_system="celestial")
     
     def plot_radius(self):
         plt.scatter(self.phi,self.phi2)
