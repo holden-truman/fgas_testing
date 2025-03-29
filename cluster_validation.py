@@ -38,7 +38,7 @@ class ClusterLensing:
         self.r_rad3, self.phi3 = _compute_lensing_angles_flatsky(self.RA_C, self.DEC_C, self.phot_cat["ra"], self.phot_cat["dec"])
     
     def plot_radius(self):
-        plt.scatter(self.phi2,self.phi3)
+        plt.scatter(self.phi,self.phi2)
         plt.title(self.name)
         plt.xlabel(r'$\phi_{old}$ [rad]')
         plt.ylabel(r'$\phi_{new}$ [rad]')
@@ -65,8 +65,6 @@ class ClusterLensing:
         # Show the plot
         plt.show()
 
-
-'''
 # Example usage:
 rxj2129_lensing = ClusterLensing(name="RXJ2129", phot_cat_path='/sdf/home/h/holden/from_lucie_2024/RXJ2129/RXJ2129_run001_v2_adam.fits',
                            dgamma=2*0.01, z_cl=0.234, lensband='W-C-RC', ra_c=322.41650000, dec_c=0.10588889)
@@ -79,8 +77,8 @@ macs1115_lensing.plot_radius()
 
 #rxj2129_lensing.plot_ra_dec()
 #macs1115_lensing.plot_ra_dec()
-'''
 
+'''
 sk_lens = SkyCoord(10 * u.deg, 0 * u.deg, frame="icrs")
 sk_src = SkyCoord(10 * u.deg, 2 * u.deg, frame="icrs")
 angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
@@ -88,3 +86,4 @@ angsep, phi = sk_lens.separation(sk_src).rad, sk_lens.position_angle(sk_src).rad
 print(sk_lens)
 print(sk_src)
 print(phi)
+'''
