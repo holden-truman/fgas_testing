@@ -124,3 +124,5 @@ r_rad2,phi2 = _compute_lensing_angles_astropy2(RA_C, DEC_C, phot_cat["ra"], phot
 plt.scatter(phi,phi2)
 plt.xlabel(r'$\phi_{old}$ [rad]')
 plt.ylabel(r'$\phi_{new}$ [rad]')
+
+plt.show()
