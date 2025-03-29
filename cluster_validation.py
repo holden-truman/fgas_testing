@@ -35,7 +35,7 @@ class ClusterLensing:
         self.r_rad2, self.phi2 = _compute_lensing_angles_astropy2(self.RA_C, self.DEC_C, self.phot_cat["ra"], self.phot_cat["dec"], coordinate_system="euclidean")
     
     def plot_radius(self):
-        plt.scatter(phi,phi2)
+        plt.scatter(self.phi,self.phi2)
         plt.title("RXJ2129")
         plt.xlabel(r'$\phi_{old}$ [rad]')
         plt.ylabel(r'$\phi_{new}$ [rad]')
