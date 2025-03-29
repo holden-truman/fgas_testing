@@ -47,8 +47,8 @@ class ClusterLensing:
 
     def plot_ra_dec(self):
         # Extract RA and DEC
-        ra = phot_cat['ra']
-        dec = phot_cat['dec']
+        ra = self.phot_cat['ra']
+        dec = self.phot_cat['dec']
         
         # Create the plot
         plt.figure(figsize=(8, 6))
