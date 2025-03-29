@@ -20,6 +20,7 @@ from scipy.optimize import curve_fit
 
 from angle_calc import compute_lensing_angles_astropy
 from angle_calc import _compute_lensing_angles_astropy2
+from angle_calc import _compute_lensing_angles_flatsky
 
 class ClusterLensing:
     def __init__(self, name, phot_cat_path, dgamma, z_cl, lensband, ra_c, dec_c):
