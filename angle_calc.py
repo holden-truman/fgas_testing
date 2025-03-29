@@ -134,14 +134,14 @@ def _compute_lensing_angles_astropy3(
     # Transformations for phi to have same orientation as _compute_lensing_angles_flatsky
     #phi += 0.5 * np.pi
     phi -= 0.5 * np.pi
+    if coordinate_system == "celestial":
+        phi = np.pi - phi
     if np.iterable(phi):
         phi[phi > np.pi] -= 2 * np.pi
         phi[angsep == 0] = 0
     else:
         phi -= 2 * np.pi if phi > np.pi else 0
         phi = 0 if angsep == 0 else phi
-    if coordinate_system == "celestial":
-        phi = np.pi - phi
     return angsep, phi
 
 #not the real one
