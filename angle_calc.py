@@ -100,8 +100,8 @@ def _compute_lensing_angles_astropy2(
 
 #not the real one
 def _compute_lensing_angles_flatsky(ra_lens, dec_lens, ra_src, dec_src):
-    delta_ra = ra_source - ra_lens
-    numerator = np.sin(delta_ra) * np.cos(dec_source)
-    denominator = np.cos(dec_lens) * np.sin(dec_source) - np.sin(dec_lens) * np.cos(dec_source) * np.cos(delta_ra)
+    delta_ra = ra_src - ra_lens
+    numerator = np.sin(delta_ra) * np.cos(dec_src)
+    denominator = np.cos(dec_lens) * np.sin(dec_src) - np.sin(dec_lens) * np.cos(dec_src) * np.cos(delta_ra)
     phi = np.arctan2(numerator, denominator)
     return phi, phi
